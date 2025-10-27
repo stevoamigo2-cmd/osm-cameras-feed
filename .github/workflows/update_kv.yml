@@ -1,13 +1,14 @@
-name: Update Mobile Alerts
+name: Update FIXED_CAMERAS KV
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # every day at midnight UTC
+    - cron: "0 */6 * * *" # every 6 hours (adjust as needed)
   workflow_dispatch:
 
 jobs:
-  update_alerts:
+  update_kv:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -15,13 +16,18 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Install Wrangler
         run: npm install -g wrangler
 
-      - name: Publish KV data
+      - name: Upload osm_cameras.json to KV
         env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }} # must be CLOUDFLARE_API_TOKEN
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          FIXED_CAMERAS_NAMESPACE: ${{ secrets.KV_NAMESPACE_ID }}
         run: |
-          wrangler kv key put --namespace-id ${{ secrets.FIXED_CAMERAS }} osm-data "$(cat mobile_alerts.json)"
+          wrangler kv key put \
+            --remote \
+            --namespace-id "$FIXED_CAMERAS_NAMESPACE" \
+            fixed-cameras \
+            "$(cat osm_cameras.json)"
