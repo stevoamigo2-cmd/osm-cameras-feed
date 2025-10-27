@@ -5,7 +5,7 @@ import json
 bbox = (49.9, -8.6, 60.9, 1.8)  # UK bounding box
 CONF_FIXED = 80
 CONF_MOBILE_POSSIBLE = 60
-OUTPUT_FILE = "osm_cameras.json"
+OUTPUT_FILE = "docs/osm_cameras.json"
 
 # OVERPASS QUERY
 overpass_url = "https://overpass-api.de/api/interpreter"
