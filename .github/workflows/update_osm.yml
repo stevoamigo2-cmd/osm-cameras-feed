@@ -10,23 +10,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Checkout repo
       - name: Checkout repo
         uses: actions/checkout@v3
         with:
-             persist-credentials: false
+          persist-credentials: false  # allow push with GITHUB_TOKEN
 
+      # Step 2: Set up Python
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.11"
 
+      # Step 3: Install dependencies
       - name: Install dependencies
         run: pip install requests
 
+      # Step 4: Ensure docs folder exists
+      - name: Create docs folder
+        run: mkdir -p docs
+
+      # Step 5: Run OSM fetch script
       - name: Run OSM fetch script
         run: python update_osm_cameras.py
 
-      - name: Commit and push JSON to GitHub Pages
+      # Step 6: Commit and push JSON to GitHub Pages
+      - name: Commit and push JSON
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
