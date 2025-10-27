@@ -24,7 +24,7 @@ jobs:
       - name: Upload osm_cameras.json to KV
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          FIXED_CAMERAS_NAMESPACE: ${{ secrets.FIXED_CAMERAS }}
+          FIXED_CAMERAS_NAMESPACE: ${{ secrets.KV_NAMESPACE_ID }}
         run: |
           wrangler kv key put \
             fixed-cameras \
