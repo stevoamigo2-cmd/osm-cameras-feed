@@ -31,3 +31,26 @@ jobs:
             --namespace-id "$FIXED_CAMERAS_NAMESPACE" \
             --path osm_cameras.json \
             --remote
+
+      # ----- DEBUG: print wrangler logs to console so you can read them in the step output -----
+      - name: Dump Wrangler logs to console
+        if: always()
+        run: |
+          echo "=== Listing wrangler log directory ==="
+          ls -la /home/runner/.config/.wrangler/logs || true
+          echo "=== Showing last 400 lines from each wrangler log (if any) ==="
+          for f in /home/runner/.config/.wrangler/logs/*.log; do
+            [ -f "$f" ] || continue
+            echo "---- START $f ----"
+            tail -n 400 "$f" || true
+            echo "---- END $f ----"
+          done
+        shell: bash
+
+      # ----- DEBUG: upload wrangler logs as an artifact to download from the Run page -----
+      - name: Upload Wrangler logs (artifact)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wrangler-logs
+          path: /home/runner/.config/.wrangler/logs/*.log
