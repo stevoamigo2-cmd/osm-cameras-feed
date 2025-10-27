@@ -1,50 +1,27 @@
-name: Update OSM Cameras KV
+name: Update Mobile Alerts
 
 on:
   schedule:
-    - cron: '0 0 * * *'   # daily at midnight UTC
+    - cron: '0 0 * * *'  # every day at midnight UTC
   workflow_dispatch:
 
 jobs:
-  update_osm_kv:
+  update_alerts:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Show repo files & confirm JSON exists
-        run: |
-          echo "Working dir: $(pwd)"
-          ls -la
-          echo "First lines of osm_cameras.json (if present):"
-          if [ -f osm_cameras.json ]; then head -n 20 osm_cameras.json; else echo "osm_cameras.json NOT FOUND"; fi
-
-      - name: Install Node (for npx caching)
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
 
-      - name: Check npx + wrangler (debug)
-        run: |
-          echo "npx wrangler version:"
-          npx --yes wrangler@4 --version || true
-          echo "wrangler help (top):"
-          npx --yes wrangler@4 kv --help || true
+      - name: Install Wrangler
+        run: npm install -g wrangler
 
-      - name: Publish OSM Cameras JSON to KV (uses npx wrangler v4)
+      - name: Publish KV data
         env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }} # must be CLOUDFLARE_API_TOKEN
         run: |
-          # show that token exists (only length, not value)
-          if [ -z "${CLOUDFLARE_API_TOKEN}" ]; then echo "CLOUDFLARE_API_TOKEN is empty"; exit 1; else echo "CLOUDFLARE_API_TOKEN present (len=${#CLOUDFLARE_API_TOKEN})"; fi
-
-          # The key used in KV
-          KEY=osm-cameras
-
-          # confirm the file exists
-          if [ ! -f osm_cameras.json ]; then echo "ERROR: osm_cameras.json not found"; exit 1; fi
-
-          # Use npx to guarantee Wrangler v4 and put the file into KV using binding name FIXED_CAMERAS
-          echo "Running: npx wrangler@4 kv put FIXED_CAMERAS ${KEY} @osm_cameras.json"
-          npx --yes wrangler@4 kv put FIXED_CAMERAS ${KEY} @osm_cameras.json
-
+          wrangler kv key put --namespace-id ${{ secrets.KV_NAMESPACE_ID }} osm-data "$(cat mobile_alerts.json)"
