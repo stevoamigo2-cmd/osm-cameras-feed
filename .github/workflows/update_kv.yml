@@ -2,7 +2,7 @@ name: Update FIXED_CAMERAS KV
 
 on:
   schedule:
-    - cron: "0 */6 * * *" # every 6 hours (adjust as needed)
+    - cron: "0 */6 * * *" # every 6 hours
   workflow_dispatch:
 
 jobs:
@@ -27,7 +27,7 @@ jobs:
           FIXED_CAMERAS_NAMESPACE: ${{ secrets.KV_NAMESPACE_ID }}
         run: |
           wrangler kv key put \
-            --remote \
-            --namespace-id "$FIXED_CAMERAS_NAMESPACE" \
-            fixed-cameras \
-            "$(cat osm_cameras.json)"
+          fixed-cameras \
+          --namespace-id "$FIXED_CAMERAS_NAMESPACE" \
+          --path osm_cameras.json \
+          --remote
