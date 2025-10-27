@@ -21,6 +21,35 @@ jobs:
       - name: Install Wrangler
         run: npm install -g wrangler
 
+      # ---------- DEBUG: verify token can see account & memberships ----------
+      - name: Debug — show Cloudflare accounts & memberships
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          echo "== Accounts =="
+          curl -s -X GET "https://api.cloudflare.com/client/v4/accounts" \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            -H "Content-Type: application/json" -o /tmp/cf_accounts.json || true
+
+          # pretty-print if jq available, fallback to python json.tool, else raw
+          if command -v jq >/dev/null 2>&1; then
+            jq . /tmp/cf_accounts.json || true
+          else
+            python -m json.tool /tmp/cf_accounts.json 2>/dev/null || cat /tmp/cf_accounts.json
+          fi
+
+          echo "== Memberships =="
+          curl -s -X GET "https://api.cloudflare.com/client/v4/memberships" \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            -H "Content-Type: application/json" -o /tmp/cf_memberships.json || true
+
+          if command -v jq >/dev/null 2>&1; then
+            jq . /tmp/cf_memberships.json || true
+          else
+            python -m json.tool /tmp/cf_memberships.json 2>/dev/null || cat /tmp/cf_memberships.json
+          fi
+        shell: bash
+
       - name: Upload osm_cameras.json to KV
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
