@@ -1,0 +1,32 @@
+name: Update OSM Cameras KV
+
+# Run daily at 00:00 UTC
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch: # optional manual trigger
+
+jobs:
+  update_kv:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install Wrangler
+        run: npm install -g wrangler
+
+      - name: Publish OSM cameras to KV
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          KV_NAMESPACE_ID: ${{ secrets.KV_NAMESPACE_ID }}
+        run: |
+          wrangler kv:key put \
+            --namespace-id $KV_NAMESPACE_ID \
+            --key "osm-cameras" \
+            --value "$(cat osm_cameras.json)"
