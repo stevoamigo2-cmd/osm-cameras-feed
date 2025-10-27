@@ -1,3 +1,4 @@
+import os
 import requests
 import json
 
@@ -6,6 +7,9 @@ bbox = (49.9, -8.6, 60.9, 1.8)  # UK bounding box
 CONF_FIXED = 80
 CONF_MOBILE_POSSIBLE = 60
 OUTPUT_FILE = "docs/osm_cameras.json"
+
+# Make sure the folder exists
+os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
 
 # OVERPASS QUERY
 overpass_url = "https://overpass-api.de/api/interpreter"
