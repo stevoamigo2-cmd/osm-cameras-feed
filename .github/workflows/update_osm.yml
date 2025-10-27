@@ -1,0 +1,33 @@
+name: Update OSM Cameras JSON
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # every 24 hours at midnight UTC
+  workflow_dispatch:
+
+jobs:
+  update_json:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run OSM fetch script
+        run: python update_osm_cameras.py
+
+      - name: Commit and push JSON to GitHub Pages
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add docs/osm_cameras.json
+          git commit -m "Update OSM cameras JSON [ci skip]" || echo "No changes to commit"
+          git push
