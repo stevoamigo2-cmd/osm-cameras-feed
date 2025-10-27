@@ -46,7 +46,6 @@ jobs:
           CONF_MOBILE_POSSIBLE = 60
           OUTPUT_FILE = "docs/osm_cameras.json"
 
-          # Make sure docs folder exists
           os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
 
           overpass_url = "https://lz4.overpass-api.de/api/interpreter"
@@ -105,14 +104,10 @@ jobs:
           print(f"Saved {len(final_json['results'])} cameras to {OUTPUT_FILE}")
           EOF
 
-      # Step 5: Commit and push JSON using PAT
-      - name: Commit and push JSON
-        env:
-          GH_PAT: ${{ secrets.GH_PAT }}
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git add docs/osm_cameras.json
-          git commit -m "Update OSM cameras JSON [ci skip]" || echo "No changes to commit"
-          git push https://x-access-token:${GH_PAT}@github.com/${{ github.repository }} HEAD:main
-
+      # Step 5: Deploy docs/ to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v6
+        with:
+          github_token: ${{ secrets.GH_PAT }}
+          publish_dir: ./docs
+          # optional: keep history if you want: keep_files: true
