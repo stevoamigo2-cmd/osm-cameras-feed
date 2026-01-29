@@ -35,7 +35,7 @@ jobs:
       - name: Run OSM fetch script
         env:
           # this comes from workflow_dispatch input; schedule runs will set it to 'uk'
-          COUNTRIES: uk,fr,de,es,it
+          COUNTRIES: ${{ github.event.inputs.countries || 'uk,fr,de,es,it' }}
         run: |
           python - << 'EOF'
           import os
