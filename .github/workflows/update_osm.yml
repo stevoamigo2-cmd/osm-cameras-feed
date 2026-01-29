@@ -8,7 +8,7 @@ on:
       countries:
         description: 'Comma-separated country codes to fetch (default: uk,fr,de,es,it). Example: "uk,us,fr"'
         required: false
-        default: 'uk,fr,de,es,it'
+        default: 'uk,fr,de,es,it,nl,be,ie,pt,se,no,dk,ch,at,pl,cz,hu,ro,bg,gr,us,ca,au,nz'
 
 jobs:
   update_json:
@@ -31,7 +31,7 @@ jobs:
       - name: Run OSM fetch script
         env:
           # Use workflow_dispatch input when provided; otherwise fall back to the multi-country default
-          COUNTRIES: ${{ github.event.inputs.countries || 'uk,fr,de,es,it' }}
+          COUNTRIES: ${{ github.event.inputs.countries || 'uk,fr,de,es,it,nl,be,ie,pt,se,no,dk,ch,at,pl,cz,hu,ro,bg,gr,us,ca,au,nz' }}
         run: |
           echo "COUNTRIES env: $COUNTRIES"
           python - <<'EOF'
