@@ -6,52 +6,48 @@ on:
   workflow_dispatch:
     inputs:
       countries:
-        description: 'Comma-separated country codes to fetch (default: uk). Example: "uk,us,fr"'
+        description: 'Comma-separated country codes to fetch (default: uk,fr,de,es,it). Example: "uk,us,fr"'
         required: false
-        default: 'uk'
+        default: 'uk,fr,de,es,it'
 
 jobs:
   update_json:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout repo
       - name: Checkout repo
         uses: actions/checkout@v3
         with:
-          persist-credentials: false  # allow push with PAT
+          persist-credentials: false
 
-      # Step 2: Set up Python
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.11"
 
-      # Step 3: Install dependencies
       - name: Install dependencies
         run: pip install requests
 
-      # Step 4: Run OSM fetch script (defaults to UK unless you specify others)
       - name: Run OSM fetch script
         env:
-          # this comes from workflow_dispatch input; schedule runs will set it to 'uk'
+          # Use workflow_dispatch input when provided; otherwise fall back to the multi-country default
           COUNTRIES: ${{ github.event.inputs.countries || 'uk,fr,de,es,it' }}
         run: |
-          python - << 'EOF'
+          echo "COUNTRIES env: $COUNTRIES"
+          python - <<'EOF'
           import os
           import requests
           import json
           import time
 
-          # CONFIGURATION
+          # Configuration
           CONF_FIXED = 80
           CONF_MOBILE_POSSIBLE = 60
           OVERPASS_URL = "https://lz4.overpass-api.de/api/interpreter"
           OUTPUT_DIR = "docs"
           os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-          # COUNTRY bounding boxes (lat_min, lon_min, lat_max, lon_max).
-          # Add or refine bboxes as needed. Keep 'uk' filename as docs/osm_cameras.json for backwards compatibility.
+          # Country bounding boxes (lat_min, lon_min, lat_max, lon_max)
           COUNTRY_BBOXES = {
               "uk": [
                   (49.9, -8.6, 55.0, -2.0),
@@ -78,20 +74,18 @@ jobs:
               "ro": [(43.6, 20.3, 48.3, 29.7)],
               "bg": [(41.2, 22.4, 44.2, 28.6)],
               "gr": [(34.8, 19.6, 41.7, 28.3)],
-              # Optional non-European markets (US included)
               "us": [(24.5, -125.0, 49.5, -66.9)],
-              # Add more countries here as required...
+              "ca": [(41.7, -141.0, 83.1, -52.6)],
+              "au": [(-44.0, 112.9, -10.7, 153.6)],
+              "nz": [(-47.3, 166.3, -34.4, 178.7)],
           }
 
-          # Which countries to fetch? Defaults to 'uk' if COUNTRIES env var is empty.
+          # Parse COUNTRIES env var (if provided) and restrict COUNTRY_BBOXES accordingly.
           env_countries = os.environ.get("COUNTRIES")
           if env_countries:
               wanted = [c.strip().lower() for c in env_countries.split(",") if c.strip()]
-              # Only keep recognized countries from COUNTRY_BBOXES
+              # Keep only recognized countries
               COUNTRY_BBOXES = {k: v for k, v in COUNTRY_BBOXES.items() if k in wanted}
-          else:
-              # default to uk for scheduled runs
-              COUNTRY_BBOXES = {"uk": COUNTRY_BBOXES["uk"]}
 
           if not COUNTRY_BBOXES:
               print("No countries configured to fetch. Exiting.")
@@ -127,7 +121,7 @@ jobs:
 
               for bbox in bboxes:
                   data = fetch_bbox(bbox)
-                  time.sleep(2)  # be gentle with Overpass
+                  time.sleep(2)
                   if not data:
                       continue
 
@@ -152,10 +146,15 @@ jobs:
               unique_results = {cam["id"]: cam for cam in all_results}.values()
               final_json = {"results": list(unique_results)}
 
+              # Choose filename: keep "osm_cameras.json" for UK to maintain backward compatibility
               if cc == "uk":
                   output_file = os.path.join(OUTPUT_DIR, "osm_cameras.json")
               else:
                   output_file = os.path.join(OUTPUT_DIR, f"{cc}_osm_cameras.json")
+
+              # Safety guard: never write non-UK data to the canonical osm_cameras.json
+              if output_file.endswith("osm_cameras.json") and cc != "uk":
+                  raise RuntimeError(f"Refusing to write non-UK country {cc} to osm_cameras.json")
 
               with open(output_file, "w") as fh:
                   json.dump(final_json, fh, indent=2)
@@ -165,7 +164,6 @@ jobs:
           print("All done.")
           EOF
 
-      # Step 5: Deploy docs/ to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4.0.0
         with:
