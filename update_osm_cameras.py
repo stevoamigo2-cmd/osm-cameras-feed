@@ -43,7 +43,11 @@ COUNTRY_BBOXES = {
     "nz": [(-47.3, 166.3, -34.4, 178.7)],
 }
 
-def fetch_bbox(bbox, timeout=180, attempts=3):
+def fetch_bbox(bbox, timeout=180, attempts=6):
+    """
+    Fetch Overpass data for a single bbox with retries and exponential backoff.
+    Treat 429 specially by backing off longer.
+    """
     query = f"""
     [out:json][timeout:{timeout}];
     (
@@ -53,16 +57,23 @@ def fetch_bbox(bbox, timeout=180, attempts=3):
     );
     out;
     """
+    backoff = 5
     for attempt in range(1, attempts + 1):
         try:
             print(f"  Fetching bbox {bbox} (attempt {attempt}/{attempts})...")
             resp = requests.get(OVERPASS_URL, params={"data": query}, timeout=timeout + 30)
+            if resp.status_code == 429:
+                print(f"    Received 429 Too Many Requests (attempt {attempt}). Backing off {backoff}s.")
+                time.sleep(backoff)
+                backoff *= 2
+                continue
             resp.raise_for_status()
             return resp.json()
         except requests.exceptions.RequestException as e:
             print(f"    Warning: fetch failed: {e}")
             if attempt < attempts:
-                time.sleep(5 * attempt)
+                time.sleep(backoff)
+                backoff *= 2
             else:
                 print("    Error: giving up on this bbox.")
                 return None
@@ -88,6 +99,7 @@ def main():
             data = fetch_bbox(bbox)
             time.sleep(2)
             if not data:
+                print(f"    Skipping bbox {bbox} for {cc} due to fetch failures.")
                 continue
 
             for node in data.get("elements", []):
@@ -116,9 +128,10 @@ def main():
         else:
             output_file = os.path.join(OUTPUT_DIR, f"{cc}_osm_cameras.json")
 
-        # Safety guard: never write non-UK data to the canonical osm_cameras.json
-        if output_file.endswith("osm_cameras.json") and cc != "uk":
-            raise RuntimeError(f"Refusing to write non-UK country {cc} to osm_cameras.json")
+        # Safety guard: only refuse if the canonical filename would be overwritten by a non-UK country
+        if os.path.basename(output_file) == "osm_cameras.json" and cc != "uk":
+            print(f"    Safety: refusing to write non-UK country {cc} to canonical osm_cameras.json; skipping write.")
+            continue
 
         with open(output_file, "w") as fh:
             json.dump(final_json, fh, indent=2)
