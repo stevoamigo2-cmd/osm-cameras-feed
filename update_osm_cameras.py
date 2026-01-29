@@ -11,7 +11,6 @@ OVERPASS_URL = "https://lz4.overpass-api.de/api/interpreter"
 OUTPUT_DIR = "docs"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-# Country bounding boxes (lat_min, lon_min, lat_max, lon_max)
 COUNTRY_BBOXES = {
     "uk": [
         (49.9, -8.6, 55.0, -2.0),
@@ -44,8 +43,12 @@ COUNTRY_BBOXES = {
     "nz": [(-47.3, 166.3, -34.4, 178.7)],
 }
 
-def build_overpass_query(bbox, timeout=180):
-    return f"""
+def fetch_bbox(bbox, timeout=180, attempts=6):
+    """
+    Fetch Overpass data for a single bbox with retries and exponential backoff.
+    Treat 429 specially by backing off longer.
+    """
+    query = f"""
     [out:json][timeout:{timeout}];
     (
       node["highway"="speed_camera"]({bbox[0]},{bbox[1]},{bbox[2]},{bbox[3]});
@@ -54,14 +57,7 @@ def build_overpass_query(bbox, timeout=180):
     );
     out;
     """
-
-def fetch_bbox(bbox, timeout=180, attempts=8, initial_backoff=5):
-    """
-    Fetch Overpass data for a single bbox with retries and exponential backoff.
-    Treat 429 specially by backing off longer. Returns parsed JSON or None.
-    """
-    query = build_overpass_query(bbox, timeout=timeout)
-    backoff = initial_backoff
+    backoff = 5
     for attempt in range(1, attempts + 1):
         try:
             print(f"  Fetching bbox {bbox} (attempt {attempt}/{attempts})...")
@@ -69,12 +65,7 @@ def fetch_bbox(bbox, timeout=180, attempts=8, initial_backoff=5):
             if resp.status_code == 429:
                 print(f"    Received 429 Too Many Requests (attempt {attempt}). Backing off {backoff}s.")
                 time.sleep(backoff)
-                backoff = min(backoff * 2, 300)
-                continue
-            if resp.status_code >= 500:
-                print(f"    Server error {resp.status_code} (attempt {attempt}). Backing off {backoff}s.")
-                time.sleep(backoff)
-                backoff = min(backoff * 2, 300)
+                backoff *= 2
                 continue
             resp.raise_for_status()
             return resp.json()
@@ -82,23 +73,19 @@ def fetch_bbox(bbox, timeout=180, attempts=8, initial_backoff=5):
             print(f"    Warning: fetch failed: {e}")
             if attempt < attempts:
                 time.sleep(backoff)
-                backoff = min(backoff * 2, 300)
+                backoff *= 2
             else:
                 print("    Error: giving up on this bbox.")
                 return None
-    return None
 
 def main():
     env_countries = os.environ.get("COUNTRIES")
     if env_countries:
-        env_countries = env_countries.strip().lower()
-
-    # Treat 'all' or empty as "use all defined countries"
-    if not env_countries or env_countries == "all":
-        country_bboxes = COUNTRY_BBOXES.copy()
-    else:
         wanted = [c.strip().lower() for c in env_countries.split(",") if c.strip()]
         country_bboxes = {k: v for k, v in COUNTRY_BBOXES.items() if k in wanted}
+    else:
+        # Default to all defined countries if COUNTRIES not set
+        country_bboxes = COUNTRY_BBOXES.copy()
 
     if not country_bboxes:
         print("No countries configured to fetch. Exiting.")
@@ -110,7 +97,6 @@ def main():
 
         for bbox in bboxes:
             data = fetch_bbox(bbox)
-            # be gentle with Overpass
             time.sleep(2)
             if not data:
                 print(f"    Skipping bbox {bbox} for {cc} due to fetch failures.")
@@ -126,7 +112,7 @@ def main():
                     conf = CONF_MOBILE_POSSIBLE
 
                 camera = {
-                    "id": f"osm-{node.get('id')}",
+                    "id": f"osm-{node['id']}",
                     "lat": node.get("lat"),
                     "lon": node.get("lon"),
                     "type": camera_type,
@@ -134,11 +120,9 @@ def main():
                 }
                 all_results.append(camera)
 
-        # Remove duplicates by id
-        unique_results = {cam["id"]: cam for cam in all_results if cam.get("id")}.values()
+        unique_results = {cam["id"]: cam for cam in all_results}.values()
         final_json = {"results": list(unique_results)}
 
-        # Choose filename: keep "osm_cameras.json" for UK to maintain backward compatibility
         if cc == "uk":
             output_file = os.path.join(OUTPUT_DIR, "osm_cameras.json")
         else:
@@ -149,13 +133,10 @@ def main():
             print(f"    Safety: refusing to write non-UK country {cc} to canonical osm_cameras.json; skipping write.")
             continue
 
-        # Always write per-country file (even if empty) so presence is visible
-        try:
-            with open(output_file, "w", encoding="utf-8") as fh:
-                json.dump(final_json, fh, indent=2, ensure_ascii=False)
-            print(f"  Saved {len(final_json['results'])} cameras to {output_file}")
-        except Exception as e:
-            print(f"  Error writing {output_file}: {e}")
+        with open(output_file, "w") as fh:
+            json.dump(final_json, fh, indent=2)
+
+        print(f"  Saved {len(final_json['results'])} cameras to {output_file}")
 
 if __name__ == "__main__":
     main()
