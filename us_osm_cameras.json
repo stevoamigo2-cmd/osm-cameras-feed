@@ -9960,6 +9960,13 @@
       "lon": -77.0132127,
       "type": "fixed_camera",
       "confidence": 80
+    },
+    {
+      "id": "osm-13517790870",
+      "lat": 33.0035081,
+      "lon": -96.9897236,
+      "type": "fixed_camera",
+      "confidence": 80
     }
   ]
 }
