@@ -14295,93 +14295,9 @@
       "confidence": 80
     },
     {
-      "id": "osm-13524612367",
-      "lat": 48.3447326,
-      "lon": 15.7302199,
-      "type": "fixed_camera",
-      "confidence": 80
-    },
-    {
-      "id": "osm-13524612389",
-      "lat": 48.4096141,
-      "lon": 15.7539808,
-      "type": "fixed_camera",
-      "confidence": 80
-    },
-    {
-      "id": "osm-13524643247",
-      "lat": 48.3738651,
-      "lon": 15.7138751,
-      "type": "fixed_camera",
-      "confidence": 80
-    },
-    {
-      "id": "osm-13524651828",
-      "lat": 48.3363816,
-      "lon": 15.8084757,
-      "type": "fixed_camera",
-      "confidence": 80
-    },
-    {
-      "id": "osm-13524661808",
-      "lat": 48.3493824,
-      "lon": 15.7476266,
-      "type": "fixed_camera",
-      "confidence": 80
-    },
-    {
-      "id": "osm-13524679764",
-      "lat": 48.4080745,
-      "lon": 15.7443746,
-      "type": "fixed_camera",
-      "confidence": 80
-    },
-    {
-      "id": "osm-13524711605",
-      "lat": 48.3441416,
-      "lon": 15.7279491,
-      "type": "fixed_camera",
-      "confidence": 80
-    },
-    {
-      "id": "osm-13524712460",
-      "lat": 48.3629969,
-      "lon": 15.7194873,
-      "type": "fixed_camera",
-      "confidence": 80
-    },
-    {
-      "id": "osm-13524743817",
-      "lat": 48.4084351,
-      "lon": 15.7377701,
-      "type": "fixed_camera",
-      "confidence": 80
-    },
-    {
-      "id": "osm-13524754860",
-      "lat": 48.2931854,
-      "lon": 15.6961898,
-      "type": "fixed_camera",
-      "confidence": 80
-    },
-    {
-      "id": "osm-13524814474",
-      "lat": 48.255313,
-      "lon": 15.6741207,
-      "type": "fixed_camera",
-      "confidence": 80
-    },
-    {
       "id": "osm-13524815741",
       "lat": 48.2688975,
       "lon": 15.6993505,
-      "type": "fixed_camera",
-      "confidence": 80
-    },
-    {
-      "id": "osm-13524817306",
-      "lat": 48.2591273,
-      "lon": 15.6820672,
       "type": "fixed_camera",
       "confidence": 80
     },

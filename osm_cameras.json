@@ -23703,6 +23703,34 @@
       "confidence": 80
     },
     {
+      "id": "osm-13530022930",
+      "lat": 52.0521652,
+      "lon": 1.2776608,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-13530022931",
+      "lat": 52.048986,
+      "lon": 1.276045,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-13530022932",
+      "lat": 52.0531399,
+      "lon": 1.2781063,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-13530022933",
+      "lat": 52.0586963,
+      "lon": 1.2771574,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
       "id": "osm-685690568",
       "lat": 55.0637083,
       "lon": -1.5460118,
