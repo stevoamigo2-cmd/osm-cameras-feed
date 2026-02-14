@@ -48680,8 +48680,8 @@
     },
     {
       "id": "osm-7588209300",
-      "lat": 45.0973484,
-      "lon": 7.3666388,
+      "lat": 45.0973684,
+      "lon": 7.3666224,
       "type": "fixed_camera",
       "confidence": 80
     },
@@ -74456,6 +74456,27 @@
       "id": "osm-13546802226",
       "lat": 43.1314979,
       "lon": -1.6007609,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-13551218565",
+      "lat": 44.9910374,
+      "lon": 9.0024263,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-13551218566",
+      "lat": 44.9906189,
+      "lon": 9.0015867,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-13556705951",
+      "lat": 48.7431893,
+      "lon": 9.3090474,
       "type": "fixed_camera",
       "confidence": 80
     }
