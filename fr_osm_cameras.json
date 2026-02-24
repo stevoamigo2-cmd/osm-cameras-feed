@@ -1919,13 +1919,6 @@
       "confidence": 80
     },
     {
-      "id": "osm-295716410",
-      "lat": 50.9183218,
-      "lon": 5.2563475,
-      "type": "fixed_camera",
-      "confidence": 80
-    },
-    {
       "id": "osm-296998792",
       "lat": 50.6464718,
       "lon": 7.2440502,
@@ -5748,13 +5741,6 @@
       "confidence": 80
     },
     {
-      "id": "osm-703332328",
-      "lat": 50.9236709,
-      "lon": 5.3060297,
-      "type": "fixed_camera",
-      "confidence": 80
-    },
-    {
       "id": "osm-703830224",
       "lat": 51.0413044,
       "lon": 4.3302226,
@@ -6897,8 +6883,8 @@
     },
     {
       "id": "osm-849008888",
-      "lat": 47.417942,
-      "lon": 8.6284608,
+      "lat": 47.4179389,
+      "lon": 8.6284563,
       "type": "fixed_camera",
       "confidence": 80
     },
@@ -14485,8 +14471,8 @@
     },
     {
       "id": "osm-1397188910",
-      "lat": 47.4174952,
-      "lon": 8.6289858,
+      "lat": 47.4175386,
+      "lon": 8.6289456,
       "type": "fixed_camera",
       "confidence": 80
     },
@@ -19037,13 +19023,6 @@
       "id": "osm-1890439716",
       "lat": 47.3712085,
       "lon": 8.6931809,
-      "type": "fixed_camera",
-      "confidence": 80
-    },
-    {
-      "id": "osm-1893998379",
-      "lat": 44.3996252,
-      "lon": 4.704333,
       "type": "fixed_camera",
       "confidence": 80
     },
@@ -57920,8 +57899,8 @@
     },
     {
       "id": "osm-9214324958",
-      "lat": 41.5943145,
-      "lon": 1.7250867,
+      "lat": 41.597875,
+      "lon": 1.7111097,
       "type": "fixed_camera",
       "confidence": 80
     },
@@ -74484,6 +74463,20 @@
       "id": "osm-13586525711",
       "lat": 49.5880722,
       "lon": 0.8796037,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-13593361249",
+      "lat": 41.5794196,
+      "lon": 1.7784666,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-13593952427",
+      "lat": 50.9234863,
+      "lon": 5.2992131,
       "type": "fixed_camera",
       "confidence": 80
     }
