@@ -8548,20 +8548,6 @@
       "confidence": 80
     },
     {
-      "id": "osm-12977386570",
-      "lat": 45.5322523,
-      "lon": -75.3121426,
-      "type": "fixed_camera",
-      "confidence": 80
-    },
-    {
-      "id": "osm-12977386571",
-      "lat": 45.5605548,
-      "lon": -75.2450535,
-      "type": "fixed_camera",
-      "confidence": 80
-    },
-    {
       "id": "osm-12984524530",
       "lat": 38.8995565,
       "lon": -77.0539772,
