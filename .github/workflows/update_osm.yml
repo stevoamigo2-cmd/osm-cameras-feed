@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       countries:
-        description: 'Comma-separated country codes to fetch (default: uk,fr,de,es,it). Example: "uk,us,fr"'
+        description: 'Comma-separated country codes to fetch (default: uk,de,es,it). Example: "uk,us"'
         required: false
         default: 'uk,de,es,it,nl,be,ie,pt,se,no,dk,ch,at,pl,cz,hu,ro,bg,gr,us,ca,nz'
 
