@@ -21188,6 +21188,13 @@
       "lon": 21.9506332,
       "type": "fixed_camera",
       "confidence": 80
+    },
+    {
+      "id": "osm-13615600238",
+      "lat": 65.6069729,
+      "lon": 22.1892827,
+      "type": "fixed_camera",
+      "confidence": 80
     }
   ]
 }
