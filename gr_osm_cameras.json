@@ -554,20 +554,6 @@
       "confidence": 80
     },
     {
-      "id": "osm-4823996230",
-      "lat": 41.1794281,
-      "lon": 27.5043236,
-      "type": "fixed_camera",
-      "confidence": 80
-    },
-    {
-      "id": "osm-4823996231",
-      "lat": 41.179468,
-      "lon": 27.5042561,
-      "type": "fixed_camera",
-      "confidence": 80
-    },
-    {
       "id": "osm-4831100980",
       "lat": 40.9520796,
       "lon": 27.4767523,
