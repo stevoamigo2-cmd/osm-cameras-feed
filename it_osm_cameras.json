@@ -37570,20 +37570,6 @@
       "confidence": 80
     },
     {
-      "id": "osm-11962385153",
-      "lat": 44.0693945,
-      "lon": 12.4356292,
-      "type": "fixed_camera",
-      "confidence": 80
-    },
-    {
-      "id": "osm-11962385154",
-      "lat": 44.0699216,
-      "lon": 12.4347303,
-      "type": "fixed_camera",
-      "confidence": 80
-    },
-    {
       "id": "osm-11962804565",
       "lat": 45.0511848,
       "lon": 9.0919043,
@@ -45406,6 +45392,13 @@
       "id": "osm-13686750379",
       "lat": 45.3259595,
       "lon": 11.9766372,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-13697936599",
+      "lat": 41.1252592,
+      "lon": 14.4581757,
       "type": "fixed_camera",
       "confidence": 80
     }
