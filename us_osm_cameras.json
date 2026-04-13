@@ -10443,6 +10443,27 @@
       "lon": -96.9828428,
       "type": "fixed_camera",
       "confidence": 80
+    },
+    {
+      "id": "osm-13725275674",
+      "lat": 32.435952,
+      "lon": -97.2021006,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-13725276676",
+      "lat": 32.4305058,
+      "lon": -97.1879053,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-13726188373",
+      "lat": 33.0107134,
+      "lon": -97.0449437,
+      "type": "fixed_camera",
+      "confidence": 80
     }
   ]
 }
