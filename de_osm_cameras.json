@@ -48614,6 +48614,20 @@
       "lon": 8.0177531,
       "type": "fixed_camera",
       "confidence": 80
+    },
+    {
+      "id": "osm-13727102032",
+      "lat": 52.489413,
+      "lon": 6.1575573,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-13727952224",
+      "lat": 48.0059655,
+      "lon": 13.6806199,
+      "type": "fixed_camera",
+      "confidence": 80
     }
   ]
 }
