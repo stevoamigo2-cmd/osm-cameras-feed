@@ -59,7 +59,7 @@ def fetch_bbox(bbox, timeout=180, attempts=6):
     for attempt in range(1, attempts + 1):
         try:
             print(f"  Fetching bbox {bbox} (attempt {attempt}/{attempts})...")
-            resp = requests.get(OVERPASS_URL, params={"data": query}, timeout=timeout + 30)
+            resp = requests.get(OVERPASS_URL, params={"data": query}, timeout=timeout + 30, headers={"Accept": "application/json"})
             if resp.status_code == 429:
                 print(f"    Received 429 Too Many Requests (attempt {attempt}). Backing off {backoff}s.")
                 time.sleep(backoff)
