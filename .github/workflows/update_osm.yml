@@ -2,7 +2,7 @@ name: Update OSM Cameras JSON
 
 on:
   schedule:
-    - cron: "0 0 * * *" # every 24 hours at midnight UTC
+    - cron: "0 0 * * 0" # every sunday 
   workflow_dispatch:
     inputs:
       countries:
