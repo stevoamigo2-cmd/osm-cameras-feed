@@ -16,12 +16,12 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           persist-credentials: false
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
@@ -30,7 +30,6 @@ jobs:
 
       - name: Run OSM fetch script
         env:
-          # Use workflow_dispatch input when provided; otherwise fall back to the multi-country default
           COUNTRIES: ${{ github.event.inputs.countries || 'uk,de,es,it,nl,be,ie,pt,se,no,dk,ch,at,pl,cz,hu,ro,bg,gr,us,ca,nz' }}
         run: |
           echo "COUNTRIES env: $COUNTRIES"
@@ -43,7 +42,8 @@ jobs:
           # Configuration
           CONF_FIXED = 80
           CONF_MOBILE_POSSIBLE = 60
-          OVERPASS_URL = "https://lz4.overpass-api.de/api/interpreter"
+          # Use the main overpass endpoint (less strict than lz4)
+          OVERPASS_URL = "https://overpass-api.de/api/interpreter"
           OUTPUT_DIR = "docs"
           os.makedirs(OUTPUT_DIR, exist_ok=True)
 
@@ -82,7 +82,6 @@ jobs:
           env_countries = os.environ.get("COUNTRIES")
           if env_countries:
               wanted = [c.strip().lower() for c in env_countries.split(",") if c.strip()]
-              # Keep only recognized countries
               COUNTRY_BBOXES = {k: v for k, v in COUNTRY_BBOXES.items() if k in wanted}
 
           if not COUNTRY_BBOXES:
@@ -92,7 +91,7 @@ jobs:
           def fetch_bbox(bbox, timeout=180, attempts=6):
               """
               Fetch Overpass data for a single bbox with retries and exponential backoff.
-              Treat 429 specially by backing off longer.
+              Uses POST with proper User-Agent to avoid 406 errors.
               """
               query = f"""
               [out:json][timeout:{timeout}];
@@ -103,13 +102,17 @@ jobs:
               );
               out;
               """
+              headers = {
+                  "Accept": "application/json",
+                  "User-Agent": "OSM-Camera-Fetcher/1.0 (SpeedCameraAlerterUk@protonmail.com)"  # Replace with your email
+              }
               backoff = 5
               for attempt in range(1, attempts + 1):
                   try:
                       print(f"  Fetching bbox {bbox} (attempt {attempt}/{attempts})...")
-                      resp = requests.get(OVERPASS_URL, params={"data": query}, timeout=timeout + 30, headers={"Accept": "application/json"})
+                      # Use POST with the query as form data
+                      resp = requests.post(OVERPASS_URL, data={"data": query}, timeout=timeout + 30, headers=headers)
                       if resp.status_code == 429:
-                          # Too many requests: back off longer and retry
                           print(f"    Received 429 Too Many Requests (attempt {attempt}). Backing off {backoff}s.")
                           time.sleep(backoff)
                           backoff *= 2
