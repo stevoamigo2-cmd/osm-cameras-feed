@@ -6932,8 +6932,8 @@
     },
     {
       "id": "osm-12578283036",
-      "lat": 38.9066924,
-      "lon": -77.0151489,
+      "lat": 38.9069985,
+      "lon": -77.0153551,
       "type": "fixed_camera",
       "confidence": 80
     },
@@ -10630,6 +10630,83 @@
       "id": "osm-13788391058",
       "lat": 33.0100936,
       "lon": -97.0369778,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-13792107428",
+      "lat": 41.2485731,
+      "lon": -73.0450402,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-13796010760",
+      "lat": 47.6929885,
+      "lon": -122.1094956,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-13796010761",
+      "lat": 47.6892153,
+      "lon": -122.1180598,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-13796412189",
+      "lat": 41.8771498,
+      "lon": -71.3765494,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-13796433901",
+      "lat": 41.8777034,
+      "lon": -71.3733608,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-13796546172",
+      "lat": 41.8727004,
+      "lon": -71.3882063,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-13800730473",
+      "lat": 25.6866409,
+      "lon": -100.1194302,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-13805344700",
+      "lat": 38.8679937,
+      "lon": -76.6179711,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-13805375002",
+      "lat": 38.9181643,
+      "lon": -76.6379884,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-13807262590",
+      "lat": 41.8865888,
+      "lon": -71.4033095,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-13807262591",
+      "lat": 41.8863997,
+      "lon": -71.4035148,
       "type": "fixed_camera",
       "confidence": 80
     }
