@@ -183,13 +183,6 @@
       "confidence": 80
     },
     {
-      "id": "osm-280662022",
-      "lat": 47.5212205,
-      "lon": 7.603105,
-      "type": "fixed_camera",
-      "confidence": 80
-    },
-    {
       "id": "osm-283157264",
       "lat": 47.3582957,
       "lon": 7.9081809,
@@ -221,13 +214,6 @@
       "id": "osm-310266154",
       "lat": 47.0859029,
       "lon": 6.80633,
-      "type": "fixed_camera",
-      "confidence": 80
-    },
-    {
-      "id": "osm-311422212",
-      "lat": 46.0254541,
-      "lon": 8.9371665,
       "type": "fixed_camera",
       "confidence": 80
     },
