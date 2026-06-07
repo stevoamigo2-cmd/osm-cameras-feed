@@ -148,6 +148,13 @@
       "confidence": 80
     },
     {
+      "id": "osm-281984011",
+      "lat": 47.6486423,
+      "lon": 26.2631614,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
       "id": "osm-305746021",
       "lat": 48.299733,
       "lon": 20.7452313,
@@ -3816,6 +3823,13 @@
       "confidence": 80
     },
     {
+      "id": "osm-13158325843",
+      "lat": 47.649938,
+      "lon": 26.2197562,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
       "id": "osm-13179668181",
       "lat": 45.910565,
       "lon": 22.5385019,
@@ -3929,8 +3943,8 @@
     },
     {
       "id": "osm-13462926899",
-      "lat": 44.1480846,
-      "lon": 21.0727074,
+      "lat": 44.1481536,
+      "lon": 21.0727163,
       "type": "fixed_camera",
       "confidence": 80
     },
@@ -4652,6 +4666,55 @@
       "id": "osm-13876680635",
       "lat": 44.3716859,
       "lon": 26.2655597,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-13899719958",
+      "lat": 45.6056597,
+      "lon": 22.9520638,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-13899719959",
+      "lat": 45.6056043,
+      "lon": 22.9521414,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-13900974980",
+      "lat": 47.6502387,
+      "lon": 26.2618237,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-13901101475",
+      "lat": 47.6511365,
+      "lon": 26.2607061,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-13901105106",
+      "lat": 47.6506206,
+      "lon": 26.2613162,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-13907475494",
+      "lat": 47.7521088,
+      "lon": 28.9933891,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-13907475496",
+      "lat": 47.7529419,
+      "lon": 28.9938585,
       "type": "fixed_camera",
       "confidence": 80
     }
