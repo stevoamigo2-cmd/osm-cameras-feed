@@ -1304,7 +1304,7 @@
     },
     {
       "id": "osm-866375305",
-      "lat": 51.292944,
+      "lat": 51.2929491,
       "lon": 3.8295022,
       "type": "fixed_camera",
       "confidence": 80
@@ -10264,8 +10264,8 @@
     },
     {
       "id": "osm-10937915903",
-      "lat": 50.6172934,
-      "lon": 3.0380569,
+      "lat": 50.6173569,
+      "lon": 3.03806,
       "type": "fixed_camera",
       "confidence": 80
     },
@@ -12672,8 +12672,8 @@
     },
     {
       "id": "osm-13121576701",
-      "lat": 50.2907955,
-      "lon": 5.5323538,
+      "lat": 50.2907597,
+      "lon": 5.5323824,
       "type": "fixed_camera",
       "confidence": 80
     },
@@ -13556,6 +13556,62 @@
       "id": "osm-14045837260",
       "lat": 50.4014735,
       "lon": 4.1100236,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-14053693823",
+      "lat": 50.2577955,
+      "lon": 5.4728743,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-14058078841",
+      "lat": 50.6520883,
+      "lon": 3.1041332,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-14058112524",
+      "lat": 50.6504521,
+      "lon": 3.101396,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-14058907899",
+      "lat": 50.5849754,
+      "lon": 4.5993994,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-14064747276",
+      "lat": 49.989719,
+      "lon": 3.8703129,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-14064757272",
+      "lat": 50.0960494,
+      "lon": 3.5749598,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-14065818640",
+      "lat": 50.8692965,
+      "lon": 3.2712235,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-14066750443",
+      "lat": 50.3226561,
+      "lon": 4.1526166,
       "type": "fixed_camera",
       "confidence": 80
     }

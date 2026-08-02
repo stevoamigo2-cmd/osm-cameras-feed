@@ -24088,6 +24088,20 @@
       "confidence": 80
     },
     {
+      "id": "osm-14057544945",
+      "lat": 51.512536,
+      "lon": -0.4029556,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-14058962347",
+      "lat": 51.5310547,
+      "lon": -0.3971426,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
       "id": "osm-685690568",
       "lat": 55.0637083,
       "lon": -1.5460118,
