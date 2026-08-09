@@ -6848,22 +6848,22 @@
     },
     {
       "id": "osm-5180441211",
-      "lat": 47.2529196,
-      "lon": 11.3483189,
+      "lat": 47.2530983,
+      "lon": 11.3489551,
       "type": "fixed_camera",
       "confidence": 80
     },
     {
       "id": "osm-5180441212",
-      "lat": 47.2531775,
-      "lon": 11.3491881,
+      "lat": 47.2533845,
+      "lon": 11.3499168,
       "type": "fixed_camera",
       "confidence": 80
     },
     {
       "id": "osm-5180441214",
-      "lat": 47.2532012,
-      "lon": 11.3492712,
+      "lat": 47.2534075,
+      "lon": 11.3499877,
       "type": "fixed_camera",
       "confidence": 80
     },
@@ -9326,8 +9326,8 @@
     },
     {
       "id": "osm-7682828696",
-      "lat": 47.0470322,
-      "lon": 15.4586194,
+      "lat": 47.0469947,
+      "lon": 15.4589077,
       "type": "fixed_camera",
       "confidence": 80
     },
@@ -11090,8 +11090,8 @@
     },
     {
       "id": "osm-9690390420",
-      "lat": 47.7966213,
-      "lon": 15.9267432,
+      "lat": 47.7968017,
+      "lon": 15.9268162,
       "type": "fixed_camera",
       "confidence": 80
     },
@@ -12651,8 +12651,8 @@
     },
     {
       "id": "osm-11844418493",
-      "lat": 46.8308186,
-      "lon": 13.4249428,
+      "lat": 46.8308122,
+      "lon": 13.4245512,
       "type": "fixed_camera",
       "confidence": 80
     },
@@ -14662,6 +14662,34 @@
       "id": "osm-14066014802",
       "lat": 47.0438587,
       "lon": 15.292328,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-14070874737",
+      "lat": 47.5501278,
+      "lon": 16.7382759,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-14070874738",
+      "lat": 47.5464619,
+      "lon": 16.7429993,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-14071818581",
+      "lat": 46.4141774,
+      "lon": 14.6391917,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-14074471259",
+      "lat": 46.6543921,
+      "lon": 14.3092968,
       "type": "fixed_camera",
       "confidence": 80
     }
