@@ -21370,6 +21370,20 @@
       "lon": 14.4946369,
       "type": "fixed_camera",
       "confidence": 80
+    },
+    {
+      "id": "osm-14155379214",
+      "lat": 59.6682047,
+      "lon": 14.0228899,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-14155379215",
+      "lat": 59.6674212,
+      "lon": 14.0217847,
+      "type": "fixed_camera",
+      "confidence": 80
     }
   ]
 }

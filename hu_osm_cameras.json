@@ -1121,6 +1121,13 @@
       "confidence": 80
     },
     {
+      "id": "osm-1577385991",
+      "lat": 47.1305907,
+      "lon": 19.4215068,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
       "id": "osm-1585389706",
       "lat": 47.948553,
       "lon": 16.1070318,
@@ -8215,6 +8222,76 @@
       "id": "osm-14131215499",
       "lat": 46.9110438,
       "lon": 18.0646926,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-14135767400",
+      "lat": 48.1208273,
+      "lon": 16.318645,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-14135827301",
+      "lat": 48.1208176,
+      "lon": 16.3186613,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-14138923966",
+      "lat": 47.2212883,
+      "lon": 19.1620146,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-14148417023",
+      "lat": 47.5067329,
+      "lon": 19.0349239,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-14152184577",
+      "lat": 47.9292446,
+      "lon": 16.2261947,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-14152888033",
+      "lat": 47.1939992,
+      "lon": 19.7635062,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-14155982487",
+      "lat": 48.3030688,
+      "lon": 16.4726094,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-14155982488",
+      "lat": 48.3048172,
+      "lon": 16.4850232,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-14155982489",
+      "lat": 48.2976446,
+      "lon": 16.4696338,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-14155982491",
+      "lat": 48.2988026,
+      "lon": 16.4866688,
       "type": "fixed_camera",
       "confidence": 80
     }
