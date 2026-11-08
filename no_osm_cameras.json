@@ -30883,6 +30883,20 @@
       "lon": 30.0879707,
       "type": "fixed_camera",
       "confidence": 80
+    },
+    {
+      "id": "osm-14338765834",
+      "lat": 60.214195,
+      "lon": 25.0858205,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-14338765836",
+      "lat": 60.2139007,
+      "lon": 25.0856095,
+      "type": "fixed_camera",
+      "confidence": 80
     }
   ]
 }

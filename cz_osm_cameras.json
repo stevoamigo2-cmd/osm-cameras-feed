@@ -36,13 +36,6 @@
       "confidence": 80
     },
     {
-      "id": "osm-26401059",
-      "lat": 49.7406596,
-      "lon": 17.3224715,
-      "type": "fixed_camera",
-      "confidence": 80
-    },
-    {
       "id": "osm-29879759",
       "lat": 49.1824456,
       "lon": 16.2889923,
@@ -191,7 +184,7 @@
     },
     {
       "id": "osm-75112883",
-      "lat": 49.8072248,
+      "lat": 49.8071352,
       "lon": 17.864436,
       "type": "fixed_camera",
       "confidence": 80
@@ -1108,8 +1101,8 @@
     },
     {
       "id": "osm-2560745146",
-      "lat": 50.8783866,
-      "lon": 16.580886,
+      "lat": 50.8784094,
+      "lon": 16.5808887,
       "type": "fixed_camera",
       "confidence": 80
     },
@@ -3285,8 +3278,8 @@
     },
     {
       "id": "osm-6482123661",
-      "lat": 49.4294239,
-      "lon": 17.4546736,
+      "lat": 49.4294422,
+      "lon": 17.4546414,
       "type": "fixed_camera",
       "confidence": 80
     },
@@ -3397,8 +3390,8 @@
     },
     {
       "id": "osm-6616162807",
-      "lat": 49.7230599,
-      "lon": 17.3068368,
+      "lat": 49.7230576,
+      "lon": 17.3068749,
       "type": "fixed_camera",
       "confidence": 80
     },
@@ -7842,8 +7835,15 @@
     },
     {
       "id": "osm-9904846443",
-      "lat": 49.743136,
-      "lon": 17.3230213,
+      "lat": 49.7430512,
+      "lon": 17.3229485,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-9904846679",
+      "lat": 49.741208,
+      "lon": 17.3224685,
       "type": "fixed_camera",
       "confidence": 80
     },
@@ -11428,6 +11428,20 @@
       "id": "osm-14323663696",
       "lat": 50.5957514,
       "lon": 15.8043559,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-14348823122",
+      "lat": 50.9975228,
+      "lon": 13.7187756,
+      "type": "fixed_camera",
+      "confidence": 80
+    },
+    {
+      "id": "osm-14348975621",
+      "lat": 49.9272313,
+      "lon": 14.0018194,
       "type": "fixed_camera",
       "confidence": 80
     }
